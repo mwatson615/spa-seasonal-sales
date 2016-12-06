@@ -26,7 +26,7 @@ function loadProducts(e) {
 	product = JSON.parse(e.target.responseText);
 	regInventory = product.products;
 	console.log(regInventory);
-	for (i = 0; i < .length; i++) {
+	for (i = 0; i < products.length; i++) {
 		regInventory.push([products.name, products.price]);
 		document.getElementById("products").innerHTML = regInventory;
 }
