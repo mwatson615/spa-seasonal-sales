@@ -1,46 +1,63 @@
 // var products = document.getElementById("products")
 // var seasonal = document.getElementById("seasonal")
 
-var inventory = {"products" : products, "seasonal" : seasonal}
-
 //Functions
 
-function seasonalDisc("click", ???) {
-	console.log("Hello");
+// function seasonalDisc("click", ???) {
+// 	console.log("Hello");
+// }
+
+
+// function multDiscount() {
+// 	if (products.category_id === 1) {
+// 		var winterDisc = products.price * categories.discount;
+// 		return winterDisc;
+// 	} else if (products.category_id === 2) {
+// 		var autumnDisc = products.price * categories.discount;
+// 		return autumnDisc;
+// 	} else {
+// 		var springDisc = products.price * categories.discount;
+// 		return springDisc;
+// 	}
+// }
+
+var regInventory = []
+function loadProducts(e) {
+	product = JSON.parse(e.target.responseText);
+	regInventory = product.products;
+	console.log(regInventory);
+	for (i = 0; i < .length; i++) {
+		regInventory.push([products.name, products.price]);
+		document.getElementById("products").innerHTML = regInventory;
 }
 
 
-
-function multDiscount() {
-	if (products.category_id === 1) {
-		var winterDisc = products.price * categories.discount;
-		return winterDisc;
-	} else if (products.category_id === 2) {
-		var autumnDisc = products.price * categories.discount;
-		return autumnDisc;
-	} else {
-		var springDisc = products.price * categories.discount;
-		return springDisc;
-	}
 }
+
+// for (var i = 0, i < product.length, i++) {
+// 	productArray.push();
+// 	document.getElementById("products").innerHTML = productArray
+// }
+
+var seasInventory = []
+function loadCats(e) {
+	category = JSON.parse(e.target.responseText)
+	seasInventory = category;
+	console.log(seasInventory);
+	document.getElementById("seasonal").innerHTML = seasInventory;
+}
+
+
 
 //XHRs
 
 var myProducts = new XMLHttpRequest();
-myProducts.addEventListener("load", ???);
-myProducts.open("GET", products.json);
+myProducts.addEventListener("load", loadProducts);
+myProducts.open("GET", "products.json");
 myProducts.send();
-
-myProducts = JSON.parse(e.target.responseText)
-	console.log("I'm working");
-	document.getElementById("products").innerHTML = myProducts
 
 
 var myCategories = new XMLHttpRequest();
-myCategories.addEventListener("load", ???);
-myCategories.open("GET", categories.json);
+myCategories.addEventListener("load", loadCats);
+myCategories.open("GET", "categories.json");
 myCategories.send();
-
-myCategories = JSON.parse(e.target.responseText)
-	console.log("I'm also working");
-document.getElementById("categories").innerHTML = myCategories;
